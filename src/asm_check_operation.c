@@ -101,7 +101,7 @@ static void ft_check_arg(t_token *a, t_token *b, int i, int args)
 
 
 
-void	ft_check_operation(t_application *app, t_token *a)
+void	ft_check_operation(t_token *a)
 {
 	t_token	*b;
 	int		i;

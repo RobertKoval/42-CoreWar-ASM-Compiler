@@ -2,6 +2,8 @@
 
 void	ft_error3(t_error_types err, t_token *tok)
 {
+	if (err == ET_UNDEFINED)
+		ft_printf("MAGIK ERROR! YOU ARE WITCH!\n");
 	if (err == ET_UNDEFINED_ERROR)
 		ft_printf("%{err}Lexical error at [%03zu:%03zu] Undefined instruction\n"
 				"%s\n%*c\n", tok->cur_pos[0], tok->cur_pos[1] + 1, tok->in_file,

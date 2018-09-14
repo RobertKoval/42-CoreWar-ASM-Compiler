@@ -22,7 +22,7 @@ static t_token	*ft_init_token(void)
 	return (tok);
 }
 
-static void	*ft_token2(t_application *app, const char *str , size_t col, int id)
+static void	ft_token2(t_application *app, const char *str , size_t col, int id)
 {
 	app->tokens = ft_init_token();
 	app->last_token = app->tokens;

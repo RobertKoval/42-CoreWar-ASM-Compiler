@@ -12,7 +12,7 @@
 
 #include "../includes/asm.h"
 
-t_token	*ft_get_labeled_operation(t_application *app, char *label, int id)
+t_token	*ft_get_labeled_operation(t_application *app, char *label)
 {
 	t_token	*l;
 	char	*tmp;
@@ -53,6 +53,8 @@ t_token	*ft_get_parent_operation(t_token *t)
 			return (t);
 		t = t->prev;
 	}
+	ft_error(ET_UNDEFINED_ERROR, t);
+	return (NULL);
 }
 
 int 	ft_bytes_between(t_token *a, t_token *b)
@@ -79,9 +81,9 @@ int 	ft_get_distance(t_application *app, t_token *s)
 	t_token	*lbl_strt;
 
 	if (s->arg_type == AT_DIRECT_LABEL)
-		lbl_trgt = ft_get_labeled_operation(app, s->cur_str + 2, s->id);
+		lbl_trgt = ft_get_labeled_operation(app, s->cur_str + 2);
 	else
-		lbl_trgt = ft_get_labeled_operation(app, s->cur_str + 1, s->id);
+		lbl_trgt = ft_get_labeled_operation(app, s->cur_str + 1);
 	lbl_strt = ft_get_parent_operation(s);
 	if (lbl_trgt == NULL) /// no code after label
 		return (0);

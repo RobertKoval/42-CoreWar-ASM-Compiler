@@ -39,6 +39,7 @@ int 	ft_valid_opcode(const char *str)
 			return (1);
 		i++;
 	}
+	return (0);
 }
 
 int 	ft_valid_argument(char *str)
@@ -55,3 +56,6 @@ int 	ft_valid_argument(char *str)
 		return (1);
 	return (0);
 }
+
+
+// TODO (1) %1; -> ';' - start of comment, must be fixed, also for '#', it can be everywhere

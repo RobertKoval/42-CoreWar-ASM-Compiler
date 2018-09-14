@@ -23,6 +23,7 @@
 */
 typedef enum 	e_error_types
 {
+	ET_UNDEFINED,
 	ET_UNDEFINED_ERROR,
 	ET_UNDEFINED_STRING,
 	ET_BAD_ARGUMENT,
@@ -74,7 +75,7 @@ typedef struct	s_application
  */
 void	ft_tokenizer(t_application *app);
 t_token	*ft_save_token(t_application *app, const char *str , size_t col);
-void	ft_check_operation(t_application *app, t_token *a);
+void	ft_check_operation(t_token *a);
 void	ft_check_source_structure(t_application *app);
 void	ft_check_label_code(t_application *app);
 void	ft_write_app(t_application *app);

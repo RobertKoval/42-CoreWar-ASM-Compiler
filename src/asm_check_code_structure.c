@@ -94,7 +94,7 @@ void	ft_check_source_structure(t_application *app)
 		else if (a->type_of_token == TT_LABEL)
 			ft_check_label(app, a);
 		else if (a->type_of_token == TT_OPCODE)
-			ft_check_operation(app, a);
+			ft_check_operation(a);   /// bulo (app, a)
 		a = a->next;
 	}
 	if (!app->state.app_name)
