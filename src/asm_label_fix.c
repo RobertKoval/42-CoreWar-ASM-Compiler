@@ -25,15 +25,16 @@ t_token	*ft_get_labeled_operation(t_application *app, char *label, int id)
 		{
 			tmp = ft_strsub(l->cur_str, 0, l->cur_str_len - 1);
 			if ((l->type_of_token == TT_LABEL) && (ft_strcmp(label, tmp) == 0))
-				while (l)
-				{
-					if (l->type_of_token == TT_OPCODE)
-					{
-						ft_strdel(&tmp);
-						return (l);
-					}
-					l = l->next;
-				}
+				return (l);
+				// while (l)
+//				{
+//					if (l->type_of_token == TT_OPCODE)
+//					{
+//						ft_strdel(&tmp);
+//						return (l);
+//					}
+//					l = l->next;
+//				}
 			ft_strdel(&tmp);
 		}
 		if (l)
