@@ -42,9 +42,9 @@ int 	ft_valid_opcode(const char *str)
 	return (0);
 }
 
-int 	ft_valid_argument(char *str)
+int 	ft_valid_argument(char *str, t_token *a)
 {
-	if (ft_valid_registr(str))
+	if (ft_valid_registr(str, a))
 		return (1);
 	else if (ft_valid_direct_int(str))
 		return (1);
@@ -56,6 +56,3 @@ int 	ft_valid_argument(char *str)
 		return (1);
 	return (0);
 }
-
-
-// TODO (1) %1; -> ';' - start of comment, must be fixed, also for '#', it can be everywhere

@@ -15,9 +15,7 @@
 int 	ft_to_big_endian(int n)   /// how it's work ?
 {
 	int nv;
-	ft_printf("Before: %d\n", n);
 	nv = (((n << 8) & 0xFF00FF00) | ((n >> 8) & 0xFF00FF));
-	ft_printf("AFTER: %d\n",((nv << 16) | ((nv >> 16) & 0xFFFF)) );
 	return ((nv << 16) | ((nv >> 16) & 0xFFFF));
 }
 
@@ -36,4 +34,21 @@ size_t 	ft_skip_spaces(const char *str)
 	if (str[i])
 		return (i);
 	return (0);
+}
+
+/*
+ * Get operation index
+ */
+int 	ft_get_opcode(const char *str)
+{
+	int i;
+
+	i = 0;
+	while (g_op_tab[i].instruct)
+	{
+		if (ft_strcmp(g_op_tab[i].instruct, str) == 0)
+			return (i);
+		i++;
+	}
+	return (-1);
 }

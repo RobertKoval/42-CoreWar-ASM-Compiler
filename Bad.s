@@ -1,9 +1,9 @@
 #deassembler par msa 1.8, made by joe
-.name "Tching tching(Intercepteur), Bouh!Bouh!(bruits d'anti-jeu)"
-.comment ""
+.name "Bad ass"
+.comment "lesa 1.8, made by joe#deassembler par msa 1.8, made by joe#deassembler par msa 1.8, made b"
 
-	 fork  %:label00          		# 3,0,281
-	 ld    %-272,r3           		# 7,3,278
+	 fork   %:label00         		# 3,0,281
+	 ld    %-272, r3           		# 7,3,278
 	 live  %0                 		# 5,10,271
 	 fork  %:label01          		# 3,15,266
 	 ld    %-272,r3           		# 7,18,263

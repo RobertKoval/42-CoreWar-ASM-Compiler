@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 13:22:21 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/10 21:57:58 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/15 16:43:06 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ typedef enum 	e_error_types
 	ET_LABEL_MANY_CHARS,
 	ET_LABEL_DUPLICATE,
 	ET_NO_COMMENT_CMD,
-	ET_NO_NAME_CMD
+	ET_NO_NAME_CMD,
+	ET_INVALID_ARGTYPE,
+	ET_UNEXIST_REGISTR
 }				t_error_types;
 /*
 ** Print error to stdout
@@ -84,13 +86,14 @@ void	ft_write_app(t_application *app);
  */
 int 	ft_valid_label(const char *str);
 int 	ft_valid_opcode(const char *str);
-int 	ft_valid_argument(char *str);
-int 	ft_valid_registr(const char *str);
+int 	ft_valid_argument(char *str, t_token *a);
+int 	ft_valid_registr(const char *str, t_token *a);
 int 	ft_valid_direct_int(const char *str);
 int 	ft_valid_indirect_int(const char *str);
 int 	ft_valid_direct_label(const char *str);
 int 	ft_valid_indirect_label(const char *str);
-void		ft_check_symbols(t_token *a);
+void	ft_check_symbols(t_token *a);
+void	ft_check_argtypes(t_token *t);
 
 /*
  * Utillity
@@ -98,4 +101,5 @@ void		ft_check_symbols(t_token *a);
 size_t 	ft_skip_spaces(const char *str);
 int		ft_to_big_endian(int n);
 short 	ft_to_big_sendian(short n);
+int 	ft_get_opcode(const char *str);
 #endif

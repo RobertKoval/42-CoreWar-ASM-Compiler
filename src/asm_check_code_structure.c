@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 21:14:13 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/10 13:08:40 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/15 13:50:43 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void ft_check_desc(t_application *app, t_token *a)
 		ft_error(ET_DESC_TO_LONG, a);
 	else if (a->id != 3)
 	{
-		ft_printf("%{err}Lexical error at [%03zu:%03zu] Description must be in "
-						  "second line \n", a->cur_pos[0], a->cur_pos[1]);
+		ft_printf("%{err}Lexical error at [%03zu:%03zu] Description "
+			"must after name \n", a->cur_pos[0], a->cur_pos[1]);
 		exit(1);
 	}
 }
@@ -94,7 +94,7 @@ void	ft_check_source_structure(t_application *app)
 		else if (a->type_of_token == TT_LABEL)
 			ft_check_label(app, a);
 		else if (a->type_of_token == TT_OPCODE)
-			ft_check_operation(a);   /// bulo (app, a)
+			ft_check_operation(a);
 		a = a->next;
 	}
 	if (!app->state.app_name)

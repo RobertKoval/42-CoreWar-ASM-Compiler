@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 21:03:35 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/11 21:13:52 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/15 16:44:32 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int 	ft_valid_indirect_int(const char *str)
 	return (i);
 }
 
-int 	ft_valid_registr(const char *str)
+int 	ft_valid_registr(const char *str, t_token *a)
 {
 	int r;
 
@@ -102,8 +102,7 @@ int 	ft_valid_registr(const char *str)
 				return (r);
 			else
 			{
-				ft_printf("%{err}Register r%d doesn't exist!\n", r);
-				exit(1);
+				ft_error(ET_UNEXIST_REGISTR, a); // TODO (3) write error
 			}
 		}
 	}

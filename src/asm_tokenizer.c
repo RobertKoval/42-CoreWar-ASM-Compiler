@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 20:45:30 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/11 13:26:02 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/15 16:43:06 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	ft_recognize_tokens(t_application *app)
 			a->type_of_token = TT_LABEL;
 		else if (ft_valid_opcode(a->cur_str))
 			a->type_of_token = TT_OPCODE;
-		else if (ft_valid_argument(a->cur_str))
+		else if (ft_valid_argument(a->cur_str, a))
 			a->type_of_token = TT_ARGUMENT;
 		else if (a->cur_str_len == 1 && a->cur_str[0] == SEPARATOR_CHAR)
 			a->type_of_token = TT_SEPARATE_CHAR;
@@ -80,7 +80,8 @@ static void	slice_p2(const char *str, size_t i, size_t *k)
 	else if (str[i] == SEPARATOR_CHAR)
 		;
 	else
-		while (str[*k] && str[*k] != SEPARATOR_CHAR && str[*k] > 33)
+		while (str[*k] && str[*k] != SEPARATOR_CHAR && str[*k] > 33 &&
+		str[*k] != ';' && str[*k] != '#')
 			(*k)++;
 }
 
@@ -126,4 +127,5 @@ void	ft_tokenizer(t_application *app)
 	}
 	ft_recognize_tokens(app);
 	ft_check_label_code(app);
+	ft_check_argtypes(app->tokens);
 }
