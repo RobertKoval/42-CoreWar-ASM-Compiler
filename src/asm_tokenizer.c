@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 20:45:30 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/15 16:43:06 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/17 19:53:52 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,10 @@
 static void	ft_check_string_tokens(t_application *app)
 {
 	t_token	*a;
-	//char *tmp;
+
 	a = app->tokens;
 	while (a)
 	{
-//		if (a->type_of_token == TT_NAME)   // save name ? remove it
-//		{
-//			if (a->next->type_of_token == TT_STRING)
-//			{
-//				tmp = ft_strsub(a->next->cur_str, 1,
-//													a->next->cur_str_len - 2);
-//				app->state.name = ft_strjoin(tmp, ".cor");
-//				ft_strdel(&tmp);
-//			}
-//		}
 		if (a->type_of_token == TT_STRING && a->cur_str[a->cur_str_len - 1]
 											 != '"')
 			ft_error(ET_NO_QUOTES, a);

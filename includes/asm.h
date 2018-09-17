@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 13:22:21 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/15 16:43:06 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/17 15:48:59 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 /*
 ** List of error types
 */
-typedef enum 	e_error_types
+typedef enum		e_error_types
 {
 	ET_UNDEFINED,
 	ET_UNDEFINED_ERROR,
@@ -36,7 +36,6 @@ typedef enum 	e_error_types
 	ET_NAME_TO_LONG,
 	ET_DESC_AGAIN,
 	ET_DESC_NO_STRING,
-	ET_DESC_TO_SHORT,
 	ET_DESC_TO_LONG,
 	ET_LABEL_TO_SHORT,
 	ET_LABEL_MANY_CHARS,
@@ -44,8 +43,9 @@ typedef enum 	e_error_types
 	ET_NO_COMMENT_CMD,
 	ET_NO_NAME_CMD,
 	ET_INVALID_ARGTYPE,
-	ET_UNEXIST_REGISTR
-}				t_error_types;
+	ET_UNEXIST_REGISTR,
+	ET_LABEL_NOT_EXIST
+}					t_error_types;
 /*
 ** Print error to stdout
 */
@@ -60,17 +60,17 @@ typedef struct		s_app_state
 /*
 ** Application structure
 */
-typedef struct	s_application
+typedef struct		s_application
 {
-	char 		*name;
-	char 		*line;
-	size_t		row;
-	int 		fd_input;
-	int 		fd_output;
+	char			*name;
+	char			*line;
+	size_t			row;
+	int				fd_input;
+	int				fd_output;
 	t_app_state		state;
-	t_token		*last_token;
-	t_token		*tokens;
-}				t_application;
+	t_token			*last_token;
+	t_token			*tokens;
+}					t_application;
 
 /*
  * Main functions
@@ -102,4 +102,8 @@ size_t 	ft_skip_spaces(const char *str);
 int		ft_to_big_endian(int n);
 short 	ft_to_big_sendian(short n);
 int 	ft_get_opcode(const char *str);
+/*
+** Magic! Read multirow comments
+*/
+void	ft_read_multi_row(t_application *app, t_token *base);
 #endif

@@ -25,7 +25,7 @@ static void ft_check_name(t_application *app, t_token *a)
 	else if (a->next->cur_str_len > PROG_NAME_LENGTH)
 		ft_error(ET_NAME_TO_LONG, a);
 	else if (a->id != 1)
-	{
+	{ //TODO (1)move to error file
 		ft_printf("%{err}Lexical error at [%03zu:%03zu] Name must be in first "
 						  "line\n", a->cur_pos[0], a->cur_pos[1]);
 		exit(1);
@@ -40,12 +40,10 @@ static void ft_check_desc(t_application *app, t_token *a)
 		ft_error(ET_DESC_AGAIN, a);
 	if (!a->next || a->next->type_of_token != TT_STRING)
 		ft_error(ET_DESC_NO_STRING, a);
-//	else if (a->next->cur_str_len <= 2)
-//		ft_error(ET_DESC_TO_SHORT, a);
 	else if (a->next->cur_str_len > COMMENT_LENGTH)
 		ft_error(ET_DESC_TO_LONG, a);
 	else if (a->id != 3)
-	{
+	{ //TODO (2) move to error file
 		ft_printf("%{err}Lexical error at [%03zu:%03zu] Description "
 			"must after name \n", a->cur_pos[0], a->cur_pos[1]);
 		exit(1);
@@ -60,9 +58,6 @@ static void ft_check_label(t_application *app, t_token *a)
 		ft_error(ET_LABEL_TO_SHORT, a);
 	else if (ft_strchr(a->cur_str, LABEL_CHAR) != ft_strrchr(a->cur_str, LABEL_CHAR))
 		ft_error(ET_LABEL_MANY_CHARS, a);
-	//////!!!///////// It's valid :( FUUU
-	//else if (a->next->type_of_token == TT_LABEL)
-		//ft_error(ET_LABEL_MANY_LABELS_ROW, a);
 	b = app->tokens;
 	while (b)
 	{

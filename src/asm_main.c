@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 13:50:55 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/15 13:50:55 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/17 18:24:29 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,12 @@ int		main(int ac, char *av[])
 	ft_printf("%{blu}Creating bot file: %{grn}OK!%{eoc}\n");
 
 	ft_write_app(compiler);
-	ft_printf("%{blu}Compiling: %{grn}OK!%{eoc}\n");
 	close(compiler->fd_output);
 	compiler = ft_deallocate_app(compiler);
-	ft_printf("%{grn}Done!%{eoc}\n");
+	ft_printf("%{blu}Compiling: %{grn}OK!%{eoc}\n");
+
+	ft_printf("%{blu}Writed to: %{grn}%s%{eoc}\n", av[1]);
 	return 0;
 }
+
+// TODO (9) Перевірити на норму

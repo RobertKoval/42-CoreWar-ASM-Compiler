@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 21:03:35 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/15 16:44:32 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/17 13:52:23 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,7 @@ int 	ft_valid_registr(const char *str, t_token *a)
 			if (r >= 1 && r <= REG_NUMBER)
 				return (r);
 			else
-			{
-				ft_error(ET_UNEXIST_REGISTR, a); // TODO (3) write error
-			}
+				ft_error(ET_UNEXIST_REGISTR, a);
 		}
 	}
 	return (0);

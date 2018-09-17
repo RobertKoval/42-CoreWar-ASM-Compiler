@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 13:29:03 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/11 22:33:36 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/17 14:22:20 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,9 @@ t_token	*ft_get_labeled_operation(t_application *app, char *label)
 			tmp = ft_strsub(l->cur_str, 0, l->cur_str_len - 1);
 			if ((l->type_of_token == TT_LABEL) && (ft_strcmp(label, tmp) == 0))
 				return (l);
-				// while (l)
-//				{
-//					if (l->type_of_token == TT_OPCODE)
-//					{
-//						ft_strdel(&tmp);
-//						return (l);
-//					}
-//					l = l->next;
-//				}
 			ft_strdel(&tmp);
 		}
-		if (l)
-			l = l->next;
+		l = l->next;
 	}
 	return (NULL);
 }
@@ -85,8 +75,8 @@ int 	ft_get_distance(t_application *app, t_token *s)
 	else
 		lbl_trgt = ft_get_labeled_operation(app, s->cur_str + 1);
 	lbl_strt = ft_get_parent_operation(s);
-	if (lbl_trgt == NULL) /// no code after label
-		return (0);
+	if (lbl_trgt == NULL) // TODO (5) Label not exist error
+		ft_error(ET_LABEL_NOT_EXIST, s);
 	if (lbl_strt->id < lbl_trgt->id)
 		return (ft_bytes_between(lbl_strt, lbl_trgt));
 	else if (lbl_strt->id > lbl_trgt->id)

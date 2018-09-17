@@ -6,14 +6,14 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:47:55 by rkoval            #+#    #+#             */
-/*   Updated: 2018/05/07 16:38:11 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/17 18:41:57 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # include "libft.h"
-# define BUFF_SIZE 128
+# define BUFF_SIZE 1
 
 typedef struct		s_head
 {

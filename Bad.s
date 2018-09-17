@@ -1,9 +1,9 @@
 #deassembler par msa 1.8, made by joe
 .name "Bad ass"
-.comment "lesa 1.8, made by joe#deassembler par msa 1.8, made by joe#deassembler par msa 1.8, made b"
+.comment "lesa 1.8, made by joe"
 
 	 fork   %:label00         		# 3,0,281
-	 ld    %-272, r3           		# 7,3,278
+	 ld    %-272, r12           		# 7,3,278
 	 live  %0                 		# 5,10,271
 	 fork  %:label01          		# 3,15,266
 	 ld    %-272,r3           		# 7,18,263
@@ -66,7 +66,7 @@ label05: ldi   r2,%:label14,r6    		# 6,233,48
 label14: sti   r6,r2,r3           		# 5,251,30
 	 zjmp  %-207              		# 3,256,25
 
-label10: live  %1                 		# 5,259,22
+label10: label23153: label3523: label_5tw: live  %1                 		# 5,259,22
 	 fork  %:label10          		# 3,264,17
 	 zjmp  %:label10          		# 3,267,14
 

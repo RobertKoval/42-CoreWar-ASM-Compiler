@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 13:11:03 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/15 16:31:28 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/17 19:52:00 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,9 @@ void	ft_check_operation(t_token *a)
 		if (b->type_of_token == TT_ARGUMENT)
 		{
 			ft_check_arg(a, b, i, args);
-			//char 	*v = &(g_op_tab[i].args[args]);
-
-			/* check if args are valid by type (DIR, IND, REG)*/
-//					if (a->codage[args] > g_op_tab[i].args[args])
-//						ft_printf("Invalid  argument type\n", g_op_tab[i].args[args]);
 			args++;
 		}
-
+		// TODO (3) винести помилки в інший файл
 		if (b->next && b->type_of_token == TT_ARGUMENT && b->next->type_of_token == TT_ARGUMENT)
 			ft_printf("%{err} No separator char\n");
 		if (b->type_of_token == TT_SEPARATE_CHAR && b->next && b->next->type_of_token == TT_SEPARATE_CHAR)
@@ -125,10 +120,10 @@ void	ft_check_operation(t_token *a)
 	}
 	if (args != g_op_tab[i].n_args)
 	{
+		// TODO (4) винести помилки в інший файл
 		ft_printf("%{err}Must be [%d] arguments [%03zu:%03zu]\n%s",
 				g_op_tab[i].n_args, a->cur_pos[0], 0, a->in_file);  /// where ?
 		exit(1);
 	}
 }
 
-// TODO (1) винести помилки в інший файл

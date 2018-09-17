@@ -36,24 +36,7 @@ void		ft_check_symbols(t_token *a)
 			if (a->type_of_token == TT_LABEL && c != ':' && c != '%' &&
 								a->cur_str[a->cur_str_len - 1] != ':')
 				ft_send_bad_char(a, c);
-
-
 		}
-
-
-
-
-//		if (!ft_isspace(a->cur_str[i]) && !ft_isalnum(a->cur_str[i])
-//			&& a->cur_str[i] != '.' &&
-//			a->cur_str[i] != ':' && a->cur_str[i] != ','
-//			&& a->cur_str[i] != '%' && a->cur_str[i] != '-')
-//		{
-//			ft_printf("%{err}Lexical error at [%03zu:%03zu] Invalid symbol "
-//							  "'%c'\n"
-//							  "%s\n", a->cur_pos[0], a->cur_pos[1] + i + 1,
-//					  a->cur_str[i], a->in_file);
-//			exit(1);
-//		}
 		i++;
 	}
 }

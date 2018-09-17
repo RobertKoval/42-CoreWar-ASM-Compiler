@@ -89,7 +89,7 @@ void	ft_write_app(t_application *app)
 			write(app->fd_output, &null, 4);
 			write(app->fd_output, &app_size, 4);
 			ft_strdel(&strings);
-		}
+		} //TODO (8) Розбити на функції
 		else if (a->type_of_token == TT_COMMENT)
 		{
 			strings = ft_strsub(a->next->cur_str, 1, a->next->cur_str_len - 2);
