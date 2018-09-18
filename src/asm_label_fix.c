@@ -75,9 +75,9 @@ int 	ft_get_distance(t_application *app, t_token *s)
 	else
 		lbl_trgt = ft_get_labeled_operation(app, s->cur_str + 1);
 	lbl_strt = ft_get_parent_operation(s);
-	if (lbl_trgt == NULL) // TODO (5) Label not exist error
+	if (lbl_trgt == NULL)
 		ft_error(ET_LABEL_NOT_EXIST, s);
-	if (lbl_strt->id < lbl_trgt->id)
+	else if (lbl_strt->id < lbl_trgt->id)
 		return (ft_bytes_between(lbl_strt, lbl_trgt));
 	else if (lbl_strt->id > lbl_trgt->id)
 		return ((-1) * ft_bytes_between(lbl_trgt, lbl_strt));
@@ -96,7 +96,7 @@ void	ft_check_label_code(t_application *app)
 					s->arg_type == AT_INDIRECT_LABEL))
 		{
 			if (s->arg_size == AS_TWO)
-				s->two_b_val = ft_get_distance(app, s);
+				s->two_b_val = (short)ft_get_distance(app, s);
 			else if (s->arg_size == AS_FOUR)
 				s->four_b_val = ft_get_distance(app, s);
 		}

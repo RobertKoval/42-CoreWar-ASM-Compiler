@@ -12,7 +12,7 @@
 
 #include "../includes/asm.h"
 
-static void	ft_write_zeroes(t_application *app, int x)
+static void	ft_write_zeroes(t_application *app, size_t x)
 {
 	char a;
 
@@ -104,7 +104,7 @@ void	ft_write_app(t_application *app)
 			ft_write_app2(app, a, &app_size);
 		a = a->next;
 	}
-	app_size = ft_to_big_endian(app_size);
+	app_size = (size_t)ft_to_big_endian((int)app_size);
 	lseek(app->fd_output, (PROG_NAME_LENGTH + sizeof(COREWAR_EXEC_MAGIC) + 4),
 		  SEEK_SET);
 	write(app->fd_output, &app_size,4);

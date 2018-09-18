@@ -83,7 +83,15 @@ static void ft_check_arg(t_token *a, t_token *b, int i, int args)
 		ft_check_arg2(a, b, i, args);
 }
 
-
+static void ft_check2(t_token *b)
+{
+	if (b->next && b->type_of_token == TT_ARGUMENT && b->next->type_of_token == TT_ARGUMENT)
+		ft_error(ET_NO_SEP_CHAR, b);
+	if (b->type_of_token == TT_SEPARATE_CHAR && b->next && b->next->type_of_token == TT_SEPARATE_CHAR)
+		ft_error(ET_ALOT_SEP_CHARS, b);
+	if (b->type_of_token == TT_SEPARATE_CHAR && b->next && b->next->type_of_token != TT_ARGUMENT)
+		ft_error(ET_NO_ARG_AFTER_SEP_CHAR, b);
+}
 
 void	ft_check_operation(t_token *a)
 {
@@ -91,39 +99,23 @@ void	ft_check_operation(t_token *a)
 	int		i;
 	int		args;
 
-
 	if ((i = ft_get_opcode(a->cur_str)) == -1)
 		ft_error(ET_UNDEFINED, NULL);
 	args = 0;
 	a->ophex = g_op_tab[i].opcode;
-
 	if (g_op_tab[i].octal == 0)
 		a->arg_size = AS_ONE;
 	else
 		a->arg_size = AS_TWO;
 	b = a->next;
-	while (b && (b->type_of_token == TT_ARGUMENT || b->type_of_token == TT_SEPARATE_CHAR))
+	while (b && (b->type_of_token == TT_ARGUMENT ||
+		b->type_of_token == TT_SEPARATE_CHAR))
 	{
 		if (b->type_of_token == TT_ARGUMENT)
-		{
-			ft_check_arg(a, b, i, args);
-			args++;
-		}
-		// TODO (3) винести помилки в інший файл
-		if (b->next && b->type_of_token == TT_ARGUMENT && b->next->type_of_token == TT_ARGUMENT)
-			ft_printf("%{err} No separator char\n");
-		if (b->type_of_token == TT_SEPARATE_CHAR && b->next && b->next->type_of_token == TT_SEPARATE_CHAR)
-			ft_printf("%{err} Can't be more than one separator char\n");
-		if (b->type_of_token == TT_SEPARATE_CHAR && b->next && b->next->type_of_token != TT_ARGUMENT)
-			ft_printf("%{err} No argument after separator char\n");
+			ft_check_arg(a, b, i, args++);
+		ft_check2(b);
 		b = b->next;
 	}
 	if (args != g_op_tab[i].n_args)
-	{
-		// TODO (4) винести помилки в інший файл
-		ft_printf("%{err}Must be [%d] arguments [%03zu:%03zu]\n%s",
-				g_op_tab[i].n_args, a->cur_pos[0], 0, a->in_file);  /// where ?
-		exit(1);
-	}
+		ft_error(ET_INVALID_ARG_NUMBER, a);
 }
-

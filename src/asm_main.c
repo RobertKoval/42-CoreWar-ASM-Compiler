@@ -98,7 +98,7 @@ int		main(int ac, char *av[])
 
 	ft_write_app(compiler);
 	close(compiler->fd_output);
-	compiler = ft_deallocate_app(compiler);
+	ft_deallocate_app(compiler);
 	ft_printf("%{blu}Compiling: %{grn}OK!%{eoc}\n");
 
 	ft_printf("%{blu}Writed to: %{grn}%s%{eoc}\n", av[1]);
@@ -106,3 +106,4 @@ int		main(int ac, char *av[])
 }
 
 // TODO (9) Перевірити на норму
+// TODO перевірити на статік функкції

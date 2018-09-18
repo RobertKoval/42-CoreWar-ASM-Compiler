@@ -56,7 +56,6 @@ static void	ft_calculate_args(t_token *t)
 
 void		ft_check_argtypes(t_token *t)
 {
-
 	if (!t)
 		ft_error(ET_UNDEFINED, NULL);
 	while (t)
@@ -66,7 +65,3 @@ void		ft_check_argtypes(t_token *t)
 		t = t->next;
 	}
 }
-
-/// 2 поле в глобальній таблиці має к-сть аргументів
-/// де codage == 0 - нема кодування, лише 1 аргумент
-//TODO (6) зробити перевірку на типи аргументів
