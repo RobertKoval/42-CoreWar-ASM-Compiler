@@ -6,19 +6,18 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 13:11:03 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/17 19:52:00 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:25:18 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-
 /*
 ** Set arguments type in 8 bit representation -> XXYYZZ00 -> 1 byte
 */
-static void ft_set_codage(t_token *tok, int arg, t_arg_type t)
-{
 
+static void	ft_set_codage(t_token *tok, int arg, t_arg_type t)
+{
 	if (arg == 0)
 		tok->codage = tok->codage | t << 6;
 	else if (arg == 1)
@@ -29,7 +28,7 @@ static void ft_set_codage(t_token *tok, int arg, t_arg_type t)
 		tok->codage = tok->codage | t;
 }
 
-static void ft_check_arg2(t_token *a, t_token *b, int i, int args)
+static void	ft_check_arg2(t_token *a, t_token *b, int i, int args)
 {
 	if (ft_valid_direct_label(b->cur_str))
 	{
@@ -57,7 +56,7 @@ static void ft_check_arg2(t_token *a, t_token *b, int i, int args)
 	}
 }
 
-static void ft_check_arg(t_token *a, t_token *b, int i, int args)
+static void	ft_check_arg(t_token *a, t_token *b, int i, int args)
 {
 	if (ft_valid_registr(b->cur_str, b))
 	{
@@ -83,17 +82,20 @@ static void ft_check_arg(t_token *a, t_token *b, int i, int args)
 		ft_check_arg2(a, b, i, args);
 }
 
-static void ft_check2(t_token *b)
+static void	ft_check2(t_token *b)
 {
-	if (b->next && b->type_of_token == TT_ARGUMENT && b->next->type_of_token == TT_ARGUMENT)
+	if (b->next && b->type_of_token == TT_ARGUMENT &&
+	b->next->type_of_token == TT_ARGUMENT)
 		ft_error(ET_NO_SEP_CHAR, b);
-	if (b->type_of_token == TT_SEPARATE_CHAR && b->next && b->next->type_of_token == TT_SEPARATE_CHAR)
+	if (b->type_of_token == TT_SEPARATE_CHAR && b->next &&
+	b->next->type_of_token == TT_SEPARATE_CHAR)
 		ft_error(ET_ALOT_SEP_CHARS, b);
-	if (b->type_of_token == TT_SEPARATE_CHAR && b->next && b->next->type_of_token != TT_ARGUMENT)
+	if (b->type_of_token == TT_SEPARATE_CHAR && b->next &&
+	b->next->type_of_token != TT_ARGUMENT)
 		ft_error(ET_NO_ARG_AFTER_SEP_CHAR, b);
 }
 
-void	ft_check_operation(t_token *a)
+void		ft_check_operation(t_token *a)
 {
 	t_token	*b;
 	int		i;

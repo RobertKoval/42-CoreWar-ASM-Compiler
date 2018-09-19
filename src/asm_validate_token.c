@@ -12,7 +12,7 @@
 
 #include "../includes/asm.h"
 
-int 	ft_valid_label(const char *str)
+int	ft_valid_label(const char *str)
 {
 	size_t i;
 
@@ -26,7 +26,7 @@ int 	ft_valid_label(const char *str)
 	return (0);
 }
 
-int 	ft_valid_opcode(const char *str)
+int	ft_valid_opcode(const char *str)
 {
 	size_t	i;
 	char	*tmp;
@@ -42,7 +42,7 @@ int 	ft_valid_opcode(const char *str)
 	return (0);
 }
 
-int 	ft_valid_argument(char *str, t_token *a)
+int	ft_valid_argument(char *str, t_token *a)
 {
 	if (ft_valid_registr(str, a))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 14:31:45 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/15 17:33:53 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:23:54 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 **	Check if arguments has valid type
 */
+
 static void	ft_calculate_args2(t_token *t, int op, size_t arg_n)
 {
 	if (t->arg_type == AT_INDIRECT_LABEL || t->arg_type == AT_INDIRECT_INT)
@@ -34,10 +35,13 @@ static void	ft_calculate_args(t_token *t)
 	size_t	arg_n;
 	int		op;
 
-	arg_n  = 0;
-	if ((op = ft_get_opcode(t->cur_str)) == -1 || !(t = t->next))
+	arg_n = 0;
+	if ((op = ft_get_opcode(t->cur_str)) == -1)
 		ft_error(ET_UNDEFINED, NULL);
-	while (t && (t->type_of_token == TT_ARGUMENT || t->type_of_token == TT_SEPARATE_CHAR))
+	else if (!(t = t->next))
+		ft_error(ET_UNDEFINED, NULL);
+	while (t && (t->type_of_token == TT_ARGUMENT ||
+	t->type_of_token == TT_SEPARATE_CHAR))
 	{
 		if (t->type_of_token == TT_ARGUMENT)
 		{

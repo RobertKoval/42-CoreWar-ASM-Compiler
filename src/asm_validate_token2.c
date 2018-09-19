@@ -12,7 +12,7 @@
 
 #include "../includes/asm.h"
 
-int 	ft_valid_direct_label(const char *str)
+int	ft_valid_direct_label(const char *str)
 {
 	int i;
 
@@ -33,7 +33,7 @@ int 	ft_valid_direct_label(const char *str)
 	return (0);
 }
 
-int 	ft_valid_indirect_label(const char *str)
+int	ft_valid_indirect_label(const char *str)
 {
 	size_t i;
 
@@ -54,7 +54,7 @@ int 	ft_valid_indirect_label(const char *str)
 	return (0);
 }
 
-int 	ft_valid_direct_int(const char *str)
+int	ft_valid_direct_int(const char *str)
 {
 	int i;
 
@@ -73,7 +73,7 @@ int 	ft_valid_direct_int(const char *str)
 	return (1);
 }
 
-int 	ft_valid_indirect_int(const char *str)
+int	ft_valid_indirect_int(const char *str)
 {
 	int i;
 
@@ -89,7 +89,7 @@ int 	ft_valid_indirect_int(const char *str)
 	return (i);
 }
 
-int 	ft_valid_registr(const char *str, t_token *a)
+int	ft_valid_registr(const char *str, t_token *a)
 {
 	int r;
 

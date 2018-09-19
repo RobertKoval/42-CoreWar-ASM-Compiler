@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 20:53:37 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/09 20:54:03 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:15:13 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static t_token	*ft_init_token(void)
 	return (tok);
 }
 
-static void	ft_token2(t_application *app, const char *str , size_t col, int id)
+static void		ft_token2(t_application *app, const char *str, size_t col,
+		int id)
 {
 	app->tokens = ft_init_token();
 	app->last_token = app->tokens;
@@ -36,7 +37,7 @@ static void	ft_token2(t_application *app, const char *str , size_t col, int id)
 	app->last_token->prev = NULL;
 }
 
-t_token	*ft_save_token(t_application *app, const char *str , size_t col)
+t_token			*ft_save_token(t_application *app, const char *str, size_t col)
 {
 	static int id;
 

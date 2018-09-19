@@ -6,13 +6,13 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 13:50:55 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/17 18:24:29 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:08:22 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-t_application	*ft_init_app(void)
+static t_application	*ft_init_app(void)
 {
 	t_application *app;
 
@@ -21,8 +21,7 @@ t_application	*ft_init_app(void)
 	return (app);
 }
 
-
-void			*ft_deallocate_app(t_application *app)
+static void				*ft_deallocate_app(t_application *app)
 {
 	t_token *tic;
 	t_token *tac;
@@ -41,7 +40,7 @@ void			*ft_deallocate_app(t_application *app)
 	return (NULL);
 }
 
-int 	ft_check_input_file_name(const char *filename)
+static int				ft_check_input_file_name(const char *filename)
 {
 	size_t len;
 
@@ -61,10 +60,13 @@ int 	ft_check_input_file_name(const char *filename)
 /*
 ** Genearate output filename from input filename
 */
-char *ft_generate_application_name(t_application *app, const char *name)
+
+static char				*ft_generate_application_name(t_application *app,
+		const char *name)
 {
 	size_t	len;
-	char 	*tmp;
+	char	*tmp;
+
 	len = ft_strlen(name);
 	app->name = ft_strsub(name, 0, len - 2);
 	if (app->name)
@@ -78,8 +80,7 @@ char *ft_generate_application_name(t_application *app, const char *name)
 	return (app->name);
 }
 
-
-int		main(int ac, char *av[])
+int						main(int ac, char *av[])
 {
 	t_application *compiler;
 
@@ -95,15 +96,14 @@ int		main(int ac, char *av[])
 									0777)) == -1)
 		ft_error(ET_CANT_CREATE_FILE, NULL);
 	ft_printf("%{blu}Creating bot file: %{grn}OK!%{eoc}\n");
-
 	ft_write_app(compiler);
 	close(compiler->fd_output);
 	ft_deallocate_app(compiler);
 	ft_printf("%{blu}Compiling: %{grn}OK!%{eoc}\n");
-
 	ft_printf("%{blu}Writed to: %{grn}%s%{eoc}\n", av[1]);
-	return 0;
+	return (0);
 }
 
 // TODO (9) Перевірити на норму
 // TODO перевірити на статік функкції
+// TODO null check

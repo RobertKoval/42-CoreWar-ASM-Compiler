@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 20:45:30 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/17 19:53:52 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:13:06 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,11 @@ static void	ft_check_string_tokens(t_application *app)
 	while (a)
 	{
 		if (a->type_of_token == TT_STRING && a->cur_str[a->cur_str_len - 1]
-											 != '"')
+											!= '"')
 			ft_error(ET_NO_QUOTES, a);
 		a = a->next;
 	}
 }
-
-
-
 
 static void	ft_recognize_tokens(t_application *app)
 {
@@ -57,7 +54,6 @@ static void	ft_recognize_tokens(t_application *app)
 	ft_check_source_structure(app);
 }
 
-
 static void	slice_p2(const char *str, size_t i, size_t *k)
 {
 	if (str[i] == '"')
@@ -79,7 +75,7 @@ static void	ft_slice_string(t_application *app, const char *str)
 {
 	size_t	i;
 	size_t	k;
-	char 	*tmp;
+	char	*tmp;
 
 	i = 0;
 	while (str[i])
@@ -100,9 +96,10 @@ static void	ft_slice_string(t_application *app, const char *str)
 	}
 }
 
-void	ft_tokenizer(t_application *app)
+void		ft_tokenizer(t_application *app)
 {
 	static size_t row;
+
 	if (!app)
 		ft_error(ET_UNDEFINED_ERROR, NULL);
 	while (get_next_line(app->fd_input, &app->line) > 0)

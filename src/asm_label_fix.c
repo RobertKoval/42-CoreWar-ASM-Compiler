@@ -6,13 +6,13 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 13:29:03 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/17 14:22:20 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:27:15 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-t_token	*ft_get_labeled_operation(t_application *app, char *label)
+static t_token	*ft_get_labeled_operation(t_application *app, char *label)
 {
 	t_token	*l;
 	char	*tmp;
@@ -33,7 +33,7 @@ t_token	*ft_get_labeled_operation(t_application *app, char *label)
 	return (NULL);
 }
 
-t_token	*ft_get_parent_operation(t_token *t)
+static t_token	*ft_get_parent_operation(t_token *t)
 {
 	if (t == NULL)
 		return (NULL);
@@ -47,7 +47,7 @@ t_token	*ft_get_parent_operation(t_token *t)
 	return (NULL);
 }
 
-int 	ft_bytes_between(t_token *a, t_token *b)
+static int		ft_bytes_between(t_token *a, t_token *b)
 {
 	int bytes;
 
@@ -65,7 +65,7 @@ int 	ft_bytes_between(t_token *a, t_token *b)
 	return (bytes);
 }
 
-int 	ft_get_distance(t_application *app, t_token *s)
+static int		ft_get_distance(t_application *app, t_token *s)
 {
 	t_token *lbl_trgt;
 	t_token	*lbl_strt;
@@ -84,7 +84,7 @@ int 	ft_get_distance(t_application *app, t_token *s)
 	return (0);
 }
 
-void	ft_check_label_code(t_application *app)
+void			ft_check_label_code(t_application *app)
 {
 	t_token *s;
 
@@ -103,4 +103,3 @@ void	ft_check_label_code(t_application *app)
 		s = s->next;
 	}
 }
-

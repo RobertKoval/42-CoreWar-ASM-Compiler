@@ -6,13 +6,13 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 13:26:56 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/11 18:14:43 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:28:27 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-void		ft_send_bad_char(t_token *tok, char c)
+static void	ft_send_bad_char(t_token *tok, char c)
 {
 	ft_printf("%{err}Lexical error at [%03zu:%03zu] Bad symbol '%c'\n"
 				"%s\n", tok->cur_pos[0], tok->cur_pos[1], c, tok->in_file);
@@ -22,7 +22,7 @@ void		ft_send_bad_char(t_token *tok, char c)
 void		ft_check_symbols(t_token *a)
 {
 	size_t	i;
-	char 	c;
+	char	c;
 
 	i = 0;
 	if (!a || a->type_of_token == TT_STRING || a->type_of_token == TT_COMMENT ||

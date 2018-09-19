@@ -6,13 +6,14 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 20:59:36 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/09 20:59:36 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:18:15 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+
 /*
-**	Convert Little-endian to big endian
+**				Convert Little-endian to big endian
 **
 **	Example -> int: 305223233 -> hex: 0x12315641 -> 12 31 56 41  (4 byte)
 **	!BUT! Our system store this value as: 0x41563112
@@ -62,7 +63,8 @@
 ** 8) 0x41560000 | 0x00003112 = 0x41563112
 */
 
-/* Example with negative number
+/*
+** 					Example with negative number
 **  -68954 = 0xFFFEF2A6
 **  0xFFFEF2A6 << 8 = 0xFEF2A600 & 0xFF00FF00 -> 0xFE00A600
 **  0xFFFEF2A6 >> 8 = 0xFFFFFEF2 & 0x00FF00FF -> 0x00FF00F2  |
@@ -73,19 +75,20 @@
 **  											 0xA6F2FEFF
 */
 
-int 	ft_to_big_endian(int n)
+int		ft_to_big_endian(int n)
 {
 	int nv;
+
 	nv = (((n << 8) & 0xFF00FF00) | ((n >> 8) & 0xFF00FF));
-	return ((nv << 16) | ((nv >> 16 ) & 0xFFFF));
+	return ((nv << 16) | ((nv >> 16) & 0xFFFF));
 }
 
-short 	ft_to_big_sendian(short n)
+short	ft_to_big_sendian(short n)
 {
 	return ((n << 8) | ((n >> 8) & 0xFF));
 }
 
-size_t 	ft_skip_spaces(const char *str)
+size_t	ft_skip_spaces(const char *str)
 {
 	size_t i;
 
@@ -100,7 +103,8 @@ size_t 	ft_skip_spaces(const char *str)
 /*
 ** Get operation index
 */
-int 	ft_get_opcode(const char *str)
+
+int		ft_get_opcode(const char *str)
 {
 	int i;
 

@@ -6,13 +6,13 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 21:14:13 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/15 13:50:43 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:27:45 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-static void ft_check_name(t_application *app, t_token *a)
+static void	ft_check_name(t_application *app, t_token *a)
 {
 	if (!app->state.app_name)
 		app->state.app_name = 1;
@@ -28,7 +28,7 @@ static void ft_check_name(t_application *app, t_token *a)
 		ft_error(ET_NAME_FIRST, a);
 }
 
-static void ft_check_desc(t_application *app, t_token *a)
+static void	ft_check_desc(t_application *app, t_token *a)
 {
 	if (!app->state.app_desc)
 		app->state.app_desc = 1;
@@ -42,13 +42,14 @@ static void ft_check_desc(t_application *app, t_token *a)
 		ft_error(ET_DESC_AFTER_NAME, a);
 }
 
-static void ft_check_label(t_application *app, t_token *a)
+static void	ft_check_label(t_application *app, t_token *a)
 {
 	t_token *b;
 
 	if (a->cur_str_len < 2)
 		ft_error(ET_LABEL_TO_SHORT, a);
-	else if (ft_strchr(a->cur_str, LABEL_CHAR) != ft_strrchr(a->cur_str, LABEL_CHAR))
+	else if (ft_strchr(a->cur_str, LABEL_CHAR) !=
+	ft_strrchr(a->cur_str, LABEL_CHAR))
 		ft_error(ET_LABEL_MANY_CHARS, a);
 	b = app->tokens;
 	while (b)
@@ -59,11 +60,11 @@ static void ft_check_label(t_application *app, t_token *a)
 	}
 }
 
-
 /*
- * Check tokens if they have valid structure
- */
-void	ft_check_source_structure(t_application *app)
+** Check tokens if they have valid structure
+*/
+
+void		ft_check_source_structure(t_application *app)
 {
 	t_token *a;
 
