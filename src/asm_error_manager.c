@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 13:50:19 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/19 15:24:27 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:51:38 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ static void	ft_error5(t_error_types err, t_token *tok)
 {
 	if (err == ET_INVALID_ARG_NUMBER)
 		ft_printf("%{err}Error at [%03zu:%03zu]: Invalid number of "
-				"arguments\n%s", tok->cur_pos[0], 0, tok->in_file);
+				"arguments\n%s\n", tok->cur_pos[0], 0, tok->in_file);
 	else if (err == ET_BAD_ARGUMENT)
 		ft_printf("%{err}Bad arguments!\nusage: ./asm <filename.s>\n");
 	else if (err == ET_CANT_OPEN_FILE)
 		ft_printf("%{err}Error! Can't open source file\n");
 	else if (err == ET_CANT_CREATE_FILE)
 		ft_printf("%{err}Error! Can't create output file\n");
+	else if (err == ET_NOTHING_TO_COMPILE)
+		ft_printf("%{err}Error! Nothing to compile!\n");
 }
 
 static void	ft_error4(t_error_types err, t_token *tok)

@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 21:14:13 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/19 15:27:45 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:50:52 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,16 @@ static void	ft_check_label(t_application *app, t_token *a)
 	}
 }
 
+static void	ft_check_app_state(t_application *app)
+{
+	if (!app->state.app_name)
+		ft_error(ET_NO_NAME_CMD, NULL);
+	else if (!app->state.app_desc)
+		ft_error(ET_NO_COMMENT_CMD, NULL);
+	else if (!app->state.operations)
+		ft_error(ET_NOTHING_TO_COMPILE, NULL);
+}
+
 /*
 ** Check tokens if they have valid structure
 */
@@ -83,11 +93,11 @@ void		ft_check_source_structure(t_application *app)
 		else if (a->type_of_token == TT_LABEL)
 			ft_check_label(app, a);
 		else if (a->type_of_token == TT_OPCODE)
+		{
+			app->state.operations = 1;
 			ft_check_operation(a);
+		}
 		a = a->next;
 	}
-	if (!app->state.app_name)
-		ft_error(ET_NO_NAME_CMD, NULL);
-	else if (!app->state.app_desc)
-		ft_error(ET_NO_COMMENT_CMD, NULL);
+	ft_check_app_state(app);
 }

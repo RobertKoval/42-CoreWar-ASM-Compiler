@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 13:22:21 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/17 15:48:59 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/19 15:44:55 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ typedef enum		e_error_types
 	ET_NO_SEP_CHAR,
 	ET_ALOT_SEP_CHARS,
 	ET_NO_ARG_AFTER_SEP_CHAR,
-	ET_INVALID_ARG_NUMBER
+	ET_INVALID_ARG_NUMBER,
+	ET_NOTHING_TO_COMPILE
 }					t_error_types;
 /*
 ** Print error to stdout
@@ -61,6 +62,7 @@ typedef struct		s_app_state
 {
 	_Bool			app_name;
 	_Bool			app_desc;
+	_Bool			operations;
 }					t_app_state;
 
 /*
