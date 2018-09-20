@@ -15,6 +15,7 @@ NAME = asm
 SRC = asm_main.c asm_check_code_structure.c \
                  asm_check_operation.c \
                  asm_check_symbols.c \
+                 asm_description_mod.c \
                  asm_error_manager.c \
                  asm_label_fix.c \
                  asm_op.c \

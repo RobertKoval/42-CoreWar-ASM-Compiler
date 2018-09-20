@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 13:22:21 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/19 15:44:55 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/20 13:30:09 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct		s_app_state
 	_Bool			app_name;
 	_Bool			app_desc;
 	_Bool			operations;
+	_Bool			multi_row;
 }					t_app_state;
 
 /*
@@ -113,5 +114,5 @@ int 	ft_get_opcode(const char *str);
 /*
 ** Magic! Read multirow comments
 */
-void	ft_read_multi_row(t_application *app, t_token *base);
+void	ft_description_mod(t_token *start);
 #endif

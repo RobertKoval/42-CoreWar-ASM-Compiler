@@ -73,7 +73,7 @@ static void	ft_error3(t_error_types err, t_token *tok)
 				NAME_CMD_STRING);
 	else if (err == ET_UNEXIST_REGISTR)
 		ft_printf("%{err}Error at [%03zu:%03zu]: Register %s not exist\n %s\n",
-			tok->cur_str, tok->cur_pos[0], tok->cur_pos[1], tok->in_file);
+				  tok->cur_pos[0], tok->cur_pos[1], tok->cur_str, tok->in_file);
 	else
 		ft_error4(err, tok);
 }

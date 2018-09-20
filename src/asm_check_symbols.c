@@ -33,7 +33,8 @@ void		ft_check_symbols(t_token *a)
 		c = a->cur_str[i];
 		if (!ft_isspace(c) && !ft_isalnum(c) && c != ',')
 		{
-			if (a->type_of_token == TT_LABEL && c != ':' && c != '%' &&
+			if (a->type_of_token == TT_LABEL && c != '_' && c != ':' && c !=
+			'%' &&
 								a->cur_str[a->cur_str_len - 1] != ':')
 				ft_send_bad_char(a, c);
 		}

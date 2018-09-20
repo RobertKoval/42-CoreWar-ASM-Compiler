@@ -5,21 +5,21 @@
 begin:	ld %0,r6
 jump:	zjmp %:deb
 .code	00	
-pare:	st r1,:begin -52
-	st r1,:begin -44
-	st r1,:begin -52
-	st r1,:begin -44
-	st r1,:begin -52
-	st r1,:begin -44
-	st r1,:begin -52
+pare:	st r0,:begin -52
+	st r0,:begin -44
+	st r0,:begin -52
+	st r0,:begin -44
+	st r0,:begin -52
+	st r0,:begin -44
+	st r0,:begin -52
 	live %1
-	st r1,:begin -44
-	st r1,:begin -52
-	st r1,:begin -44
-	st r1,:begin -52
-	st r1,:begin -44
-	st r1,:begin -52
-	st r1,:begin -44
+	st r0,:begin -44
+	st r0,:begin -52
+	st r0,:begin -44
+	st r0,:begin -52
+	st r0,:begin -44
+	st r0,:begin -52
+	st r0,:begin -44
 	zjmp %:pare
 toto:	st r15,-480
 	st r4,-481
@@ -29,20 +29,20 @@ toto:	st r15,-480
 	st r14,-485
 	zjmp %-510
 deb:	
-st1:	st r1,:lastlive1
-st2:	st r1,:lastlive2
-st3:	st r1,:lastlive3
-st4:	st r1,:lastlive4
-st5:	st r1,:live1
-st6:	st r1,:live2
-st7:	st r1,:live3
-st8:	st r1,:live4
-	ld %0x01090000 + :catch1 - :begin -1,r1
-	st r1,:jump
-	ld %0xFFFFFFFF,r1
-	st r1,:begin -4
-	st r1,:begin -8
-	st r1,:begin -12
+st1:	st r1,:lastlive1 +1
+st2:	st r1,:lastlive2 +1
+st3:	st r1,:lastlive3 +1
+st4:	st r1,:lastlive4 +1
+st5:	st r1,:live1 +1
+st6:	st r1,:live2 +1
+st7:	st r1,:live3 +1
+st8:	st r1,:live4 +1
+	ld %0x01090000 + :catch1 - :begin -1,r0
+	st r0,:jump
+	ld %0xFFFFFFFF,r0
+	st r0,:begin -4
+	st r0,:begin -8
+	st r0,:begin -12
 
 hop:	live %1
 	fork %:decal2
@@ -51,7 +51,7 @@ hop:	live %1
 	zjmp %:decal
 
 toto1:	zjmp %:toto	
-pare1:	ld %0,r1
+pare1:	ld %0,r0
 	zjmp %:pare	
 decal2: live %1
 	fork %:suite
@@ -107,27 +107,27 @@ just4:	live %3
 	live %3
 just5:	fork %:middle
 suitb:	live %3
-	st r1,:st1
+	st r0,:st1+1
 	live %3
-	st r1,:st1
+	st r0,:st1+1
 	live %3
-	st r1,:st1
+	st r0,:st1+1
 live1:	live %3
-	st r1,:st1
+	st r0,:st1+1
 live2:	live %3
-	st r1,:st1
+	st r0,:st1+1
 lastlive1: live %1
 	ld %0,r6
 lastlive2: live %1
 	zjmp %:suitb
 middle:	live %3
-	st r1,:st2
+	st r0,:st2+1
 	live %3
-	st r1,:st2
+	st r0,:st2+1
 	live %3
-	st r1,:st2
+	st r0,:st2+1
 live3:	live %3
-	st r1,:st2
+	st r0,:st2+1
 live4:	live %4
 lastlive3: live %1
 	ld %0,r6
@@ -178,7 +178,7 @@ catch:
 	live %5
 	live %5
 	live %5
-	ld %0,r1
+	ld %0,r0
 	zjmp %:catch
 	
 fuite:	live %1

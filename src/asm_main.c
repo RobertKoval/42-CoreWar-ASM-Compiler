@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 13:50:55 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/19 15:08:22 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/20 18:40:32 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,17 @@ int						main(int ac, char *av[])
 		ft_error(ET_CANT_OPEN_FILE, NULL);
 	ft_generate_application_name(compiler, av[1]);
 	ft_tokenizer(compiler);
+	ft_printf("%{blu}Get source code: %{grn}%s\n", av[1]);
 	ft_printf("%{blu}Reading source code: %{grn}OK!%{eoc}\n");
 	if ((compiler->fd_output = open(compiler->name, O_CREAT | O_RDWR | O_TRUNC,
 									0777)) == -1)
 		ft_error(ET_CANT_CREATE_FILE, NULL);
-	ft_printf("%{blu}Creating bot file: %{grn}OK!%{eoc}\n");
 	ft_write_app(compiler);
 	close(compiler->fd_output);
-	ft_deallocate_app(compiler);
 	ft_printf("%{blu}Compiling: %{grn}OK!%{eoc}\n");
-	ft_printf("%{blu}Writed to: %{grn}%s%{eoc}\n", av[1]);
+	ft_printf("%{blu}Writed to: %{grn}%s%{eoc}\n", compiler->name);
+	ft_deallocate_app(compiler);
+
 	return (0);
 }
 
