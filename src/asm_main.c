@@ -101,7 +101,6 @@ int						main(int ac, char *av[])
 	ft_printf("%{blu}Compiling: %{grn}OK!%{eoc}\n");
 	ft_printf("%{blu}Writed to: %{grn}%s%{eoc}\n", compiler->name);
 	ft_deallocate_app(compiler);
-
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 12:13:11 by rkoval            #+#    #+#             */
-/*   Updated: 2018/07/11 12:23:41 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/20 19:31:58 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	char	*t;
 	char	*s;
-	size_t 	n;
+	size_t	n;
 
 	t = dst;
 	s = (char*)src;
 	n = size;
-
 	if (n)
 	{
 		while (n)

@@ -6,18 +6,19 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 13:22:21 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/20 13:30:09 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/20 19:39:18 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
-#define ASM_H
+# define ASM_H
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
 # include "../libft/includes/ft_printf.h"
 # include "op.h"
 # include "tokens.h"
 # include <fcntl.h>
+
 /*
 ** List of error types
 */
@@ -53,10 +54,11 @@ typedef enum		e_error_types
 	ET_INVALID_ARG_NUMBER,
 	ET_NOTHING_TO_COMPILE
 }					t_error_types;
+
 /*
 ** Print error to stdout
 */
-void	ft_error(t_error_types err, t_token *tok);
+void				ft_error(t_error_types err, t_token *tok);
 
 typedef struct		s_app_state
 {
@@ -82,37 +84,40 @@ typedef struct		s_application
 }					t_application;
 
 /*
- * Main functions
- */
-void	ft_tokenizer(t_application *app);
-t_token	*ft_save_token(t_application *app, const char *str , size_t col);
-void	ft_check_operation(t_token *a);
-void	ft_check_source_structure(t_application *app);
-void	ft_check_label_code(t_application *app);
-void	ft_write_app(t_application *app);
-/*
- * Validation
- */
-int 	ft_valid_label(const char *str);
-int 	ft_valid_opcode(const char *str);
-int 	ft_valid_argument(char *str, t_token *a);
-int 	ft_valid_registr(const char *str, t_token *a);
-int 	ft_valid_direct_int(const char *str);
-int 	ft_valid_indirect_int(const char *str);
-int 	ft_valid_direct_label(const char *str);
-int 	ft_valid_indirect_label(const char *str);
-void	ft_check_symbols(t_token *a);
-void	ft_check_argtypes(t_token *t);
+** Main functions
+*/
+void				ft_tokenizer(t_application *app);
+t_token				*ft_save_token(t_application *app, const char *str,
+		size_t col);
+void				ft_check_operation(t_token *a);
+void				ft_check_source_structure(t_application *app);
+void				ft_check_label_code(t_application *app);
+void				ft_write_app(t_application *app);
 
 /*
- * Utillity
- */
-size_t 	ft_skip_spaces(const char *str);
-int		ft_to_big_endian(int n);
-short 	ft_to_big_sendian(short n);
-int 	ft_get_opcode(const char *str);
+** Validation
+*/
+int					ft_valid_label(const char *str);
+int					ft_valid_opcode(const char *str);
+int					ft_valid_argument(char *str, t_token *a);
+int					ft_valid_registr(const char *str, t_token *a);
+int					ft_valid_direct_int(const char *str);
+int					ft_valid_indirect_int(const char *str);
+int					ft_valid_direct_label(const char *str);
+int					ft_valid_indirect_label(const char *str);
+void				ft_check_symbols(t_token *a);
+void				ft_check_argtypes(t_token *t);
+
+/*
+** Utillity
+*/
+size_t				ft_skip_spaces(const char *str);
+int					ft_to_big_endian(int n);
+short				ft_to_big_sendian(short n);
+int					ft_get_opcode(const char *str);
+
 /*
 ** Magic! Read multirow comments
 */
-void	ft_description_mod(t_token *start);
+void				ft_description_mod(t_token *start);
 #endif

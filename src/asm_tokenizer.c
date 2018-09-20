@@ -38,7 +38,7 @@ static void	ft_recognize_tokens(t_application *app)
 		else if (ft_strcmp(a->cur_str, COMMENT_CMD_STRING) == 0)
 			a->type_of_token = TT_COMMENT;
 		else if (a->cur_str[0] == '"')
-			ft_description_mod(a);//a->type_of_token = TT_STRING;
+			ft_description_mod(a);
 		else if (ft_valid_label(a->cur_str))
 			a->type_of_token = TT_LABEL;
 		else if (ft_valid_opcode(a->cur_str))

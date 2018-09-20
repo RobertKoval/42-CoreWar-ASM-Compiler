@@ -40,8 +40,8 @@ static void	ft_desc_mod2(t_token *start, t_token *po)
 
 void		ft_description_mod(t_token *start)
 {
-	t_token *po;
-	char *tmp;
+	t_token	*po;
+	char	*tmp;
 
 	if (start->cur_str[start->cur_str_len - 1] == '"' && start->cur_str_len -
 	1 != 0)

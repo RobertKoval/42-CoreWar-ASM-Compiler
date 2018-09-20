@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 13:03:47 by rkoval            #+#    #+#             */
-/*   Updated: 2018/07/09 15:35:52 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/20 19:32:38 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,6 @@
 # define BITS_PER_ARRAY	(sizeof(t_bitarray) * 8)
 # define ARR_OFFSET(b)	((b) / BITS_PER_ARRAY)
 # define BIT_OFFSET(b)	((b) % BITS_PER_ARRAY)
-
-/*
-** MACROS
-*/
-
-typedef unsigned int t_uint;
-typedef unsigned long int t_luint;
-typedef unsigned long long int t_lluint;
-typedef long int t_lint;
-typedef long long int t_llint;
 
 /*
 ** BASE FUNCTIONS
