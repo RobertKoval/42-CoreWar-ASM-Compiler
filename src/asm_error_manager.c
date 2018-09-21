@@ -25,6 +25,9 @@ static void	ft_error5(t_error_types err, t_token *tok)
 		ft_printf("%{err}Error! Can't create output file\n");
 	else if (err == ET_NOTHING_TO_COMPILE)
 		ft_printf("%{err}Error! Nothing to compile!\n");
+	else if (err == ET_UNEXIST_OPERATION)
+		ft_printf("%{err}Error at [%03zu:%03zu]: Invalid operation\n%s\n",
+				tok->cur_pos[0], 0, tok->in_file);
 }
 
 static void	ft_error4(t_error_types err, t_token *tok)

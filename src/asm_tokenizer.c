@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 20:45:30 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/20 18:18:38 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/21 17:06:08 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	slice_p2(t_application *app, const char *str, size_t i, size_t *k)
 	{
 		while (str[*k] && str[*k] != '"')
 			(*k)++;
-		if (str[*k] == '"')
+		if (str[0] == '"' || str[*k] == '"')
 		{
 			app->state.multi_row = 0;
 			(*k)++;
@@ -110,7 +110,8 @@ static void	ft_slice_string(t_application *app, const char *str)
 
 void		ft_tokenizer(t_application *app)
 {
-	static size_t row;
+	static size_t	row;
+	char			*tmp;
 
 	if (!app)
 		ft_error(ET_UNDEFINED_ERROR, NULL);
@@ -122,10 +123,12 @@ void		ft_tokenizer(t_application *app)
 			app->row = row;
 			ft_slice_string(app, app->line);
 		}
-		else if (app->state.multi_row == 1)
+		else if (app->line[0] == '\0' && app->state.multi_row == 1)
 		{
 			app->row = row;
-			ft_slice_string(app, "\n");
+			tmp = ft_strjoin(app->last_token->cur_str, "\n");
+			ft_strdel(&app->last_token->cur_str);
+			app->last_token->cur_str = tmp;
 		}
 		ft_strdel(&app->line);
 	}

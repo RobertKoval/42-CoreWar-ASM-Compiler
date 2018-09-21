@@ -25,12 +25,6 @@ typedef enum		e_token_type
 	TT_ARGUMENT,
 	TT_SEPARATE_CHAR
 }					t_token_type;
-enum				e_bits
-{
-	EB_REG = 1,
-	EB_DIR = 2,
-	EB_IND = 3
-};
 typedef enum		e_argtype
 {
 	AT_REGISTR,

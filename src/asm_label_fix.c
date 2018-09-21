@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 13:29:03 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/19 15:27:15 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/21 17:23:10 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ static t_token	*ft_get_labeled_operation(t_application *app, char *label)
 		{
 			tmp = ft_strsub(l->cur_str, 0, l->cur_str_len - 1);
 			if ((l->type_of_token == TT_LABEL) && (ft_strcmp(label, tmp) == 0))
+			{
+				ft_strdel(&tmp);
 				return (l);
-			ft_strdel(&tmp);
+			}
+			if (tmp)
+				ft_strdel(&tmp);
 		}
 		l = l->next;
 	}

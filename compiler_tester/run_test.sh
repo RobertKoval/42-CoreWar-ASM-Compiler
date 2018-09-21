@@ -8,7 +8,8 @@ then
 elif [ "$1" = "-all" ]
 then
     rm -rf ./my/
-    rm -rd ./original/
+    rm -rf ./original/
+    rm compile.log
     exit 1
 fi
 
@@ -22,7 +23,7 @@ for cor in ./original/
 do
     rm -rf "$cor"
 done
-
+rm compile.log
 #Copy bots to pre-build directories
 mkdir -p my
 mkdir -p original
@@ -36,12 +37,14 @@ done
 #compile bots
 for org in ./original/*.s
 do
-    ./asm_original "$org"
+    ./asm_original "$org" >/dev/null
 done
 
 for my in ./my/*.s
 do
-    ./asm_my "$my"
+    echo "$my" >> compile.log
+    ./asm_my "$my" >> compile.log  2>&1
+    echo "" >> compile.log
 done
 
 #compare result and save

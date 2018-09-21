@@ -1,5 +1,5 @@
 .name "Papa Carlo"
-.comment "somenew"
+.comment "azaza"
 
 ld %57671936, r8
 ld %100728832, r9
@@ -53,7 +53,7 @@ ld %68863, r10
 ld %246, r11
 ld %1, r5
 ld %-1, r6
-st r8, 240 #+4
+st r8, 240
 st r9, 239
 st r10, 238
 st r11, 237

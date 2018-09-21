@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 13:50:55 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/20 18:40:32 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/21 17:35:30 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,3 @@ int						main(int ac, char *av[])
 	ft_deallocate_app(compiler);
 	return (0);
 }
-
-// TODO (9) Перевірити на норму
-// TODO перевірити на статік функкції
-// TODO null check

@@ -1,5 +1,3 @@
 Only in original/: Explosive_Kitty.cor
 Only in original/: Kittystrophic.cor
-Files my/Misaka_Mikoto.cor and original/Misaka_Mikoto.cor differ
 Only in original/: run_Kitty_RUN.cor
-Files my/ultima.cor and original/ultima.cor differ

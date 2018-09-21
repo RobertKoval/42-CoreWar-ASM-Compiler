@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 13:11:03 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/19 15:25:18 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/21 16:38:28 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_check_arg2(t_token *a, t_token *b, int i, int args)
 {
 	if (ft_valid_direct_label(b->cur_str))
 	{
-		ft_set_codage(a, args, EB_DIR);
+		ft_set_codage(a, args, DIR_CODE);
 		b->arg_type = AT_DIRECT_LABEL;
 		if (g_op_tab[i].label_size == 0)
 			b->arg_size = AS_FOUR;
@@ -41,7 +41,7 @@ static void	ft_check_arg2(t_token *a, t_token *b, int i, int args)
 	}
 	else if (ft_valid_direct_int(b->cur_str))
 	{
-		ft_set_codage(a, args, EB_DIR);
+		ft_set_codage(a, args, DIR_CODE);
 		b->arg_type = AT_DIRECT_INT;
 		if (g_op_tab[i].label_size == 0)
 		{
@@ -60,21 +60,21 @@ static void	ft_check_arg(t_token *a, t_token *b, int i, int args)
 {
 	if (ft_valid_registr(b->cur_str, b))
 	{
-		ft_set_codage(a, args, EB_REG);
+		ft_set_codage(a, args, REG_CODE);
 		b->arg_type = AT_REGISTR;
 		b->arg_size = AS_ONE;
 		b->one_b_val = (char)ft_atoi(b->cur_str + 1);
 	}
 	else if (ft_valid_indirect_int(b->cur_str))
 	{
-		ft_set_codage(a, args, EB_IND);
+		ft_set_codage(a, args, IND_CODE);
 		b->arg_type = AT_INDIRECT_INT;
 		b->arg_size = AS_TWO;
 		b->two_b_val = (short)ft_atoi(b->cur_str);
 	}
 	else if (ft_valid_indirect_label(b->cur_str))
 	{
-		ft_set_codage(a, args, EB_IND);
+		ft_set_codage(a, args, IND_CODE);
 		b->arg_type = AT_INDIRECT_LABEL;
 		b->arg_size = AS_TWO;
 	}
@@ -102,7 +102,7 @@ void		ft_check_operation(t_token *a)
 	int		args;
 
 	if ((i = ft_get_opcode(a->cur_str)) == -1)
-		ft_error(ET_UNDEFINED, NULL);
+		ft_error(ET_UNEXIST_OPERATION, a);
 	args = 0;
 	a->ophex = g_op_tab[i].opcode;
 	if (g_op_tab[i].octal == 0)
