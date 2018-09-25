@@ -1,5 +1,0 @@
-Only in original/: 42.cor
-Only in original/: Explosive_Kitty.cor
-Only in original/: Kittystrophic.cor
-Only in original/: barriere.cor
-Only in original/: run_Kitty_RUN.cor

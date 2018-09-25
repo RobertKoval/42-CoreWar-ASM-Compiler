@@ -6,7 +6,7 @@
 #    By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/15 14:19:53 by rkoval            #+#    #+#              #
-#    Updated: 2018/07/11 11:41:42 by rkoval           ###   ########.fr        #
+#    Updated: 2018/09/25 16:59:37 by rkoval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ $(NAME): $(OBJ)
 	make -C $(LIBFT_DIR)
 	gcc -o $(NAME) $(CFLAGS) $(OBJ) $(CPPFLAGS) $(LDFLAGS)
 	@echo "$(GREEN)asm compiler $(BOLDRED)made$(RESET)"
+	@cp $(NAME) ./compiler_tester/
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p obj

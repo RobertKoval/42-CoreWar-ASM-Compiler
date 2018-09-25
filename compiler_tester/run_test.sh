@@ -10,6 +10,7 @@ then
     rm -rf ./my/
     rm -rf ./original/
     rm compile.log
+    rm result.txt
     exit 1
 fi
 
@@ -23,7 +24,7 @@ for cor in ./original/
 do
     rm -rf "$cor"
 done
-rm compile.log
+
 #Copy bots to pre-build directories
 mkdir -p my
 mkdir -p original
