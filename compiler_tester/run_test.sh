@@ -43,9 +43,10 @@ done
 for my in ./my/*.s
 do
     echo "$my" >> compile.log
-    ./asm_my "$my" >> compile.log  2>&1
+    ./asm "$my" >> compile.log  2>&1
     echo "" >> compile.log
 done
 
 #compare result and save
 diff -rq my/ original/ > result.txt
+echo "Read result.txt & compile.log"

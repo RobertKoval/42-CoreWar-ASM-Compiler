@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/09/20 19:43:17 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/25 15:57:24 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define DIR_CODE				2
 # define IND_CODE				3
 # define MAX_ARGS_NUMBER		4
-# define MAX_PLAYERS			4
 # define MEM_SIZE				(4*1024)
 # define IDX_MOD				(MEM_SIZE / 8)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
@@ -32,17 +31,12 @@
 # define NAME_CMD_STRING		".name"
 # define COMMENT_CMD_STRING		".comment"
 # define REG_NUMBER				16
-# define CYCLE_TO_DIE			1536
-# define CYCLE_DELTA			50
-# define NBR_LIVE				21
-# define MAX_CHECKS				10
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		(0xea83f3)
 # define T_REG					1
 # define T_DIR					2
 # define T_IND					4
-# define T_LAB					8
 
 typedef char				t_arg_type;
 typedef struct					s_header

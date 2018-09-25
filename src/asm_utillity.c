@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 20:59:36 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/19 15:18:15 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/25 16:44:48 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,25 @@ int		ft_get_opcode(const char *str)
 		i++;
 	}
 	return (-1);
+}
+
+void	ft_check_app_size(t_application *app)
+{
+	t_token	*tok;
+	size_t	app_size;
+
+	app_size = 0;
+	tok = app->tokens;
+	while (tok)
+	{
+		if (tok->arg_size == AS_ONE)
+			app_size += 1;
+		else if (tok->arg_size == AS_TWO)
+			app_size += 2;
+		else if (tok->arg_size == AS_FOUR)
+			app_size += 4;
+		tok = tok->next;
+	}
+	if (app_size > CHAMP_MAX_SIZE)
+		ft_error(ET_PLAYER_TO_BIG, NULL);
 }

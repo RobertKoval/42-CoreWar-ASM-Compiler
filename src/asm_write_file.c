@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 16:03:27 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/19 15:10:45 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/25 16:18:11 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	ft_write_app4(t_application *app, t_token *a, size_t app_size)
 	int		null;
 	char	*strings;
 
-	strings = NULL;
 	null = 0;
 	if (a->type_of_token == TT_NAME)
 	{

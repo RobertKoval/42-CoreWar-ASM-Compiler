@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 13:50:19 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/19 15:51:38 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/25 16:49:09 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ static void	ft_error5(t_error_types err, t_token *tok)
 	else if (err == ET_UNEXIST_OPERATION)
 		ft_printf("%{err}Error at [%03zu:%03zu]: Invalid operation\n%s\n",
 				tok->cur_pos[0], 0, tok->in_file);
+	else if (err == ET_PLAYER_TO_BIG)
+		ft_printf("%{err}Error! Your asm code is to big! MAX_SIZE: %d byte.\n",
+				CHAMP_MAX_SIZE);
 }
 
 static void	ft_error4(t_error_types err, t_token *tok)
@@ -96,19 +99,20 @@ static void	ft_error2(t_error_types err, t_token *tok)
 			"%s\n", tok->cur_pos[0], tok->cur_str_len, tok->in_file);
 	if (err == ET_LABEL_TO_SHORT)
 		ft_printf("%{err}Error at [%03zu:%03zu]: Label to short\n"
-			"%s\n%*c\n", tok->cur_pos[0], tok->cur_str_len, tok->in_file, '^');
+			"%s\n", tok->cur_pos[0], tok->cur_str_len, tok->in_file);
 	else if (err == ET_LABEL_MANY_CHARS)
 		ft_printf("%{err}Error at [%03zu:%03zu]: A lot of LABEL_CHAR\n"
-			"%s\n%*c\n", tok->cur_pos[0], tok->cur_str_len, tok->in_file, '^');
+			"%s\n", tok->cur_pos[0], tok->cur_str_len, tok->in_file);
 	else if (err == ET_LABEL_DUPLICATE)
 		ft_printf("%{err}Error at [%03zu:%03zu]: Label exist\n"
-			"%s\n%*c\n", tok->cur_pos[0], tok->cur_str_len, tok->in_file, '^');
+			"%s\n", tok->cur_pos[0], tok->cur_str_len, tok->in_file);
 	else
 		ft_error3(err, tok);
 }
 
 void		ft_error(t_error_types err, t_token *tok)
 {
+	ft_printf("%{red}");
 	if (err == ET_NO_QUOTES)
 		ft_printf("%{err}Error at [%03zu:%03zu]: No quotes!\n%s\n%*c\n",
 			tok->cur_pos[0], ft_strlen(tok->in_file) + 1,
@@ -128,5 +132,6 @@ void		ft_error(t_error_types err, t_token *tok)
 				tok->cur_pos[0], tok->cur_str_len, tok->in_file);
 	else
 		ft_error2(err, tok);
+	ft_printf("%{eoc}");
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 13:22:21 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/20 19:39:18 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/25 16:02:48 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ typedef enum		e_error_types
 	ET_NO_ARG_AFTER_SEP_CHAR,
 	ET_INVALID_ARG_NUMBER,
 	ET_NOTHING_TO_COMPILE,
-	ET_UNEXIST_OPERATION
+	ET_UNEXIST_OPERATION,
+	ET_PLAYER_TO_BIG
 }					t_error_types;
 
 /*
@@ -116,7 +117,7 @@ size_t				ft_skip_spaces(const char *str);
 int					ft_to_big_endian(int n);
 short				ft_to_big_sendian(short n);
 int					ft_get_opcode(const char *str);
-
+void				ft_check_app_size(t_application *app);
 /*
 ** Magic! Read multirow comments
 */

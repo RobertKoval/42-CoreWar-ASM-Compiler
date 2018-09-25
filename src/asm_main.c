@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 13:50:55 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/21 17:35:30 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/25 16:52:10 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,17 @@ int						main(int ac, char *av[])
 	if ((compiler->fd_input = open(av[1], O_RDONLY)) == -1)
 		ft_error(ET_CANT_OPEN_FILE, NULL);
 	ft_generate_application_name(compiler, av[1]);
+	ft_printf("%{cyn}Get source code: %{grn}%s\n", av[1]);
 	ft_tokenizer(compiler);
-	ft_printf("%{blu}Get source code: %{grn}%s\n", av[1]);
-	ft_printf("%{blu}Reading source code: %{grn}OK!%{eoc}\n");
+	ft_printf("%{cyn}Reading source code: %{grn}success!%{eoc}\n");
+	ft_check_app_size(compiler);
 	if ((compiler->fd_output = open(compiler->name, O_CREAT | O_RDWR | O_TRUNC,
 									0777)) == -1)
 		ft_error(ET_CANT_CREATE_FILE, NULL);
 	ft_write_app(compiler);
 	close(compiler->fd_output);
-	ft_printf("%{blu}Compiling: %{grn}OK!%{eoc}\n");
-	ft_printf("%{blu}Writed to: %{grn}%s%{eoc}\n", compiler->name);
+	ft_printf("%{cyn}Compiling: %{grn}success!%{eoc}\n");
+	ft_printf("%{cyn}Writed to: %{grn}%s%{eoc}\n", compiler->name);
 	ft_deallocate_app(compiler);
 	return (0);
 }

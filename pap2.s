@@ -1,5 +1,5 @@
 .name "Papa Carlo"
-.comment "azaza"
+.comment "FROM PERU"
 
 ld %57671936, r8
 ld %100728832, r9

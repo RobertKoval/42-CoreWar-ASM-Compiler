@@ -79,7 +79,7 @@ static void	slice_p2(t_application *app, const char *str, size_t i, size_t *k)
 		;
 	else
 		while (str[*k] && str[*k] != SEPARATOR_CHAR && str[*k] > 33 &&
-		str[*k] != ';' && str[*k] != '#')
+		str[*k] != ';' && str[*k] != COMMENT_CHAR)
 			(*k)++;
 }
 
@@ -94,7 +94,7 @@ static void	ft_slice_string(t_application *app, const char *str)
 	{
 		if (str[i] > 32 || str[i] == 10)
 		{
-			if (str[i] == '#' || str[i] == ';')
+			if (str[i] == COMMENT_CHAR || str[i] == ';')
 				break ;
 			k = i + 1;
 			slice_p2(app, str, i, &k);
@@ -118,7 +118,7 @@ void		ft_tokenizer(t_application *app)
 	while (get_next_line(app->fd_input, &app->line) > 0)
 	{
 		++row;
-		if ((app->line[0] != '\0') && app->line[0] != '#')
+		if ((app->line[0] != '\0') && app->line[0] != COMMENT_CHAR)
 		{
 			app->row = row;
 			ft_slice_string(app, app->line);
