@@ -22,6 +22,7 @@ SRC = asm_main.c asm_check_code_structure.c \
                  asm_op_argtype_checker.c \
                  asm_token_manager.c \
                  asm_tokenizer.c \
+                 asm_tokenizer2.c \
                  asm_utillity.c \
                  asm_validate_token.c \
                  asm_validate_token2.c \

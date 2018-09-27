@@ -1,7 +1,7 @@
 .name "Papa Carlo"
 .comment "FROM PERU"
 
-ld %57671936, r8
+ld, %57671936, r8
 ld %100728832, r9
 ld %68863, r10
 ld %246, r11

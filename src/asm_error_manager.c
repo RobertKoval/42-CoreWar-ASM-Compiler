@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 13:50:19 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/25 16:49:09 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/26 15:09:38 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ static void	ft_error5(t_error_types err, t_token *tok)
 	else if (err == ET_PLAYER_TO_BIG)
 		ft_printf("%{err}Error! Your asm code is to big! MAX_SIZE: %d byte.\n",
 				CHAMP_MAX_SIZE);
+	else if (err == ET_IS_DIR)
+		ft_printf("%{err}Error! I think it's not a file.\n");
+	else if (err == ET_INVALID_SYMBOL)
+		ft_printf("%{err}Error at [%03zu:%03zu]: Invalid symbol after opcode"
+			"\n%s.\n", tok->cur_pos[0], tok->cur_pos[1], tok->in_file);
 }
 
 static void	ft_error4(t_error_types err, t_token *tok)

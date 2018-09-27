@@ -120,4 +120,6 @@ void		ft_check_operation(t_token *a)
 	}
 	if (args != g_op_tab[i].n_args)
 		ft_error(ET_INVALID_ARG_NUMBER, a);
+	if (a->next && a->next->type_of_token != TT_ARGUMENT)
+		ft_error(ET_INVALID_SYMBOL, a->next);
 }

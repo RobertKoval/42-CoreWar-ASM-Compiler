@@ -6,53 +6,11 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 20:45:30 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/21 17:06:08 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/26 15:14:35 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
-
-static void	ft_check_string_tokens(t_application *app)
-{
-	t_token	*a;
-
-	a = app->tokens;
-	while (a)
-	{
-		if (a->type_of_token == TT_STRING && a->cur_str[a->cur_str_len - 1]
-											!= '"')
-			ft_error(ET_NO_QUOTES, a);
-		a = a->next;
-	}
-}
-
-static void	ft_recognize_tokens(t_application *app)
-{
-	t_token *a;
-
-	a = app->tokens;
-	while (a)
-	{
-		if (ft_strcmp(a->cur_str, NAME_CMD_STRING) == 0)
-			a->type_of_token = TT_NAME;
-		else if (ft_strcmp(a->cur_str, COMMENT_CMD_STRING) == 0)
-			a->type_of_token = TT_COMMENT;
-		else if (a->cur_str[0] == '"')
-			ft_description_mod(a);
-		else if (ft_valid_label(a->cur_str))
-			a->type_of_token = TT_LABEL;
-		else if (ft_valid_opcode(a->cur_str))
-			a->type_of_token = TT_OPCODE;
-		else if (ft_valid_argument(a->cur_str, a))
-			a->type_of_token = TT_ARGUMENT;
-		else if (a->cur_str_len == 1 && a->cur_str[0] == SEPARATOR_CHAR)
-			a->type_of_token = TT_SEPARATE_CHAR;
-		ft_check_symbols(a);
-		a = a->next;
-	}
-	ft_check_string_tokens(app);
-	ft_check_source_structure(app);
-}
 
 static void	slice_p2(t_application *app, const char *str, size_t i, size_t *k)
 {
@@ -112,10 +70,11 @@ void		ft_tokenizer(t_application *app)
 {
 	static size_t	row;
 	char			*tmp;
+	int				gnl;
 
 	if (!app)
 		ft_error(ET_UNDEFINED_ERROR, NULL);
-	while (get_next_line(app->fd_input, &app->line) > 0)
+	while ((gnl = get_next_line(app->fd_input, &app->line)) > 0)
 	{
 		++row;
 		if ((app->line[0] != '\0') && app->line[0] != COMMENT_CHAR)
@@ -132,7 +91,6 @@ void		ft_tokenizer(t_application *app)
 		}
 		ft_strdel(&app->line);
 	}
+	gnl == -1 ? ft_error(ET_IS_DIR, NULL) : 0;
 	ft_recognize_tokens(app);
-	ft_check_label_code(app);
-	ft_check_argtypes(app->tokens);
 }

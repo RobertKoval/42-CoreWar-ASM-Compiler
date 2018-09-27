@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 13:22:21 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/25 16:02:48 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/26 15:11:34 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ typedef enum		e_error_types
 	ET_INVALID_ARG_NUMBER,
 	ET_NOTHING_TO_COMPILE,
 	ET_UNEXIST_OPERATION,
-	ET_PLAYER_TO_BIG
+	ET_PLAYER_TO_BIG,
+	ET_IS_DIR,
+	ET_INVALID_SYMBOL
 }					t_error_types;
 
 /*
@@ -89,6 +91,7 @@ typedef struct		s_application
 ** Main functions
 */
 void				ft_tokenizer(t_application *app);
+void				ft_recognize_tokens(t_application *app);
 t_token				*ft_save_token(t_application *app, const char *str,
 		size_t col);
 void				ft_check_operation(t_token *a);

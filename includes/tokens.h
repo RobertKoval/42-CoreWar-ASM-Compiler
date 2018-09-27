@@ -27,6 +27,7 @@ typedef enum		e_token_type
 }					t_token_type;
 typedef enum		e_argtype
 {
+	AT_UNDEFINED,
 	AT_REGISTR,
 	AT_DIRECT_INT,
 	AT_DIRECT_LABEL,
