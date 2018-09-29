@@ -56,7 +56,8 @@ typedef enum		e_error_types
 	ET_UNEXIST_OPERATION,
 	ET_PLAYER_TO_BIG,
 	ET_IS_DIR,
-	ET_INVALID_SYMBOL
+	ET_INVALID_SYMBOL,
+	ET_LONG_IND
 }					t_error_types;
 
 /*

@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 21:03:35 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/17 13:52:23 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/28 20:33:58 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	ft_valid_indirect_int(const char *str)
 			return (0);
 		i++;
 	}
+	if (str[0] != '-' && ft_strlen(str) > 5)
+		ft_error(ET_LONG_IND, NULL);
 	return (i);
 }
 

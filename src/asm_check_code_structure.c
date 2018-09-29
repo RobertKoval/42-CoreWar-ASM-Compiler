@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/09 21:14:13 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/20 13:30:09 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/29 16:46:20 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,9 @@ void		ft_check_source_structure(t_application *app)
 	a = app->tokens;
 	while (a)
 	{
-		if (a->type_of_token == TT_NAME)
-			ft_check_name(app, a);
-		else if (a->type_of_token == TT_COMMENT)
-			ft_check_desc(app, a);
-		else if (a->type_of_token == TT_UNDEFINED)
+		a->type_of_token == TT_NAME ? ft_check_name(app, a) : 0;
+		a->type_of_token == TT_COMMENT ? ft_check_desc(app, a) : 0;
+		if (a->type_of_token == TT_UNDEFINED)
 			ft_error(ET_UNDEFINED_ERROR, a);
 		else if (a->type_of_token == TT_STRING && a->next &&
 		a->next->type_of_token == TT_STRING)
@@ -97,6 +95,9 @@ void		ft_check_source_structure(t_application *app)
 			app->state.operations = 1;
 			ft_check_operation(a);
 		}
+		if (a->type_of_token == TT_SEPARATE_CHAR)
+			a->next && a->next->type_of_token == TT_ARGUMENT ? 0 :
+				ft_error(ET_INVALID_SYMBOL, a);
 		a = a->next;
 	}
 	ft_check_app_state(app);

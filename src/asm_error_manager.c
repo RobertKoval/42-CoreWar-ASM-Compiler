@@ -6,7 +6,7 @@
 /*   By: rkoval <rkoval@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 13:50:19 by rkoval            #+#    #+#             */
-/*   Updated: 2018/09/26 15:09:38 by rkoval           ###   ########.fr       */
+/*   Updated: 2018/09/29 16:47:57 by rkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ static void	ft_error5(t_error_types err, t_token *tok)
 	else if (err == ET_IS_DIR)
 		ft_printf("%{err}Error! I think it's not a file.\n");
 	else if (err == ET_INVALID_SYMBOL)
-		ft_printf("%{err}Error at [%03zu:%03zu]: Invalid symbol after opcode"
-			"\n%s.\n", tok->cur_pos[0], tok->cur_pos[1], tok->in_file);
+		ft_printf("%{err}Error at [%03zu:%03zu]: Invalid symbol"
+			"\n\'%s\'\n", tok->cur_pos[0], tok->cur_pos[1] + 1, tok->cur_str);
+	else if (err == ET_LONG_IND)
+		ft_printf("%{err}Error! Somewhere very big T_IND value\n");
 }
 
 static void	ft_error4(t_error_types err, t_token *tok)
